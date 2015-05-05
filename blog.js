@@ -9,3 +9,4 @@ var entries = [
 exports.getBlogEntries = function() {
     return entries;
 };
+
