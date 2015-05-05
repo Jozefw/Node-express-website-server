@@ -3,7 +3,7 @@ var app = express();
 // require handlebars
 var hbs = require('hbs');
 
-// sets the key view engine the value of html
+// sets the key view engine the value of html chck api docs
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 
