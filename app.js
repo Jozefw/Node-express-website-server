@@ -7,6 +7,9 @@ var hbs = require('hbs');
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 
+// gives us acces to blog.js file
+require blogEngine=require('./blog');
+
 // when theres a get request to the home page send the file in the view folder
 app.get('/', function(request, response){
 	// sendfile send the file
