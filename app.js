@@ -21,12 +21,12 @@ app.get('/', function(request, response){
 
 app.get('/about', function(request,response){
 	// response.sendfile("./views/about.html");
-	response.render("about");
+	response.render("about",{title:"About Me"});
 });
 
 app.get('/article', function(request, response){
 	// response.sendfile("./views/article.html");
-	response.render("article");
+	response.render("article", {title:entry.title,blog:entry});
 });
 
 app.listen(3000);
