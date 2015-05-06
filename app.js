@@ -5,11 +5,11 @@ var hbs = require('hbs');
 
 // gives us acces to blog.js file
 var blogEngine = require('./blog');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 // sets the key view engine the value of html chck api docs
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
-app.use(express.bodyParser());
+app.use(bodyParser());
 
 // when theres a get request to the home page send the file in the view folder
 app.get('/', function(request, response){
@@ -25,10 +25,10 @@ app.get('/about', function(request,response){
 	response.render("about",{title:"About Me"});
 });
 
-app.get('/article', function(request, response){
+app.get('/article/:id', function(request, response){
 	// response.sendfile("./views/article.html");
 	var entry =blogEngine.getBlogEntry(request.params.id);
-	response.render("article", {title:entry.title,blog:entry});
+	response.render("article", {title:entry.title, blog:entry});
 });
 
 app.listen(3000);
