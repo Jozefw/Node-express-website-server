@@ -9,7 +9,9 @@ var bodyParser = require('body-parser');
 // sets the key view engine the value of html chck api docs
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
-app.use(bodyParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(express.static('public'));
 
 // when theres a get request to the home page send the file in the view folder
 app.get('/', function(request, response){
@@ -27,7 +29,7 @@ app.get('/about', function(request,response){
 
 app.get('/article/:id', function(request, response){
 	// response.sendfile("./views/article.html");
-	var entry =blogEngine.getBlogEntry(request.params.id);
+	var entry = blogEngine.getBlogEntry(request.params.id);
 	response.render("article", {title:entry.title, blog:entry});
 });
 
